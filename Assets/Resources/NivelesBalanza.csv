@@ -1,0 +1,6 @@
+﻿NivelID;TipoEcuacion;ValoresIniciales;PesosDisponibles
+NivelFacil;Basico;2+1+2_S+1_S|0;0
+NivelMedio;DespejeInvertido;F8|0|F3;5|4_S|2|1_S
+NivelDificil;EcuacionCompuesta;0|F7|F4|F10|F5|F4;5_S|3|3_S|2|1
+Nivel1_Facil;Basico;2+2_S|0;0
+Nivel3_Facil;DespejeInvertido;F5|0|F8;3_S|4|1

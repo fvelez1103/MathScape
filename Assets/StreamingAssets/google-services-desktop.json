@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "404514317364",
+    "firebase_url": "https://db-mathscapedatos-default-rtdb.firebaseio.com",
+    "project_id": "db-mathscapedatos",
+    "storage_bucket": "db-mathscapedatos.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404514317364:android:548f3b8a552c1fdc1c9661",
+        "android_client_info": {
+          "package_name": "com.tesis.mathscape"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0JLF0DvgX6vf5zRIsfxU8WFzWz0zG69I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

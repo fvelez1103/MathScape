@@ -1,0 +1,19 @@
+﻿ID;Dificultad;EsImagen;ContenidoPregunta;Opcion0;Opcion1;Opcion2;Opcion3;IndiceCorrecto
+1;Facil;False;¿Cuál es el factor común en la expresión 4x + 8?;x;4;8;2x;1
+2;Facil;False;Si x + 5 = 12, ¿cuál es el valor de x?;17;-7;7;5;2
+3;Facil;False;¿Qué tipo de gráfica representa una función lineal?;Círculo;Línea recta;Parábola;Curva en U;1
+4;Facil;False;¿A qué es igual la potencia xᵒ (asumiendo que x no es cero)?;0;x;No está definido;1;3
+5;Facil;False;¿Qué símbolo matemático representa estrictamente 'mayor que'?;<;>=;>;<=;2
+6;Facil;False;¿Cuál es el desarrollo del producto notable (a+b)(a-b)?;a² + b²;a² - 2ab + b²;a² - b²;a² + 2ab + b²;2
+7;Medio;False;Al factorizar la diferencia de cuadrados x² - 25, se obtiene:;(x-5)²;(x+5)²;(x-5)(x+5);(x-25)(x+1);2
+8;Medio;False;¿Cuáles son las raíces de la ecuación x² - 4x = 0;2 y -2;0 y 4;Solo 4;0 y -4;1
+9;Medio;False;Si multiplicas una inecuación por un número negativo, ¿qué sucede con el signo de desigualdad?;Se invierte;Se mantiene igual;Se convierte en igualdad;Se elimina;0
+10;Medio;False;¿Cuál es la factorización del trinomio x² + 5x + 6?;(x-2)(x-3);(x+5)(x+1);(x+2)(x+3);(x+1)(x+6);2
+11;Medio;False;En la función lineal f(x) = 3x - 2, ¿cuál es el valor de la pendiente?;-2;x;0;3;3
+12;Medio;False;Según las propiedades, ¿a qué es igual el logaritmo de un producto log(A * B)?;log(A) * log(B);log(A) + log(B);log(A) - log(B);B * log(A);1
+13;Dificil;False;¿Cuál es la solución de la ecuación con radicales √{x - 3} = 4;7;19;16;25;1
+14;Dificil;False;¿Qué término numérico falta para que x² + 10x sea un trinomio cuadrado perfecto?;20;10;100;25;3
+15;Dificil;False;¿Cuál es el conjunto solución de la inecuación lineal 2x - 4 < 0?;x > 2;x < -2;x < 2;x > -2;2
+16;Dificil;False;¿Cuál es la coordenada del vértice de la función cuadrática f(x) = (x - 2)² + 3;(-2, 3);(2, -3);(2, 3);(-2, -3);2
+17;Dificil;False;Según el Triángulo de Pascal, ¿cuáles son los coeficientes para desarrollar (x+y)³;1, 3, 3, 1;1, 2, 1;1, 4, 6, 4, 1;3, 3, 3;0
+18;Dificil;False;Si resolvemos la ecuación cuadrática x² - 7x + 12 = 0, ¿cuáles son los valores de x?;-3 y -4;6 y 2;3 y 4;-6 y -2;2

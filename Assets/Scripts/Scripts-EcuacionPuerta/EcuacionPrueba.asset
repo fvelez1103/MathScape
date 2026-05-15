@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a3c2189000b4d7db5f1b478ea01cfb, type: 3}
+  m_Name: EcuacionPrueba
+  m_EditorClassIdentifier: Assembly-CSharp::EcuacionData
+  imagenesProgreso:
+  - {fileID: 21300000, guid: 973d08d7670f648a18e180c793dc3d49, type: 3}
+  - {fileID: 21300000, guid: e782e517c73d3443a8adefdd34bd0e1a, type: 3}
+  - {fileID: 21300000, guid: a7b9464ca543a4718a8e00b837d5fe97, type: 3}
+  - {fileID: 21300000, guid: 21a867e297ea64425b8fe459b359fd8a, type: 3}
+  acciones:
+  - "\xBFQu\xE9 cantidad sumas para neutralizar el \u22126?"
+  - "\xBFPor qu\xE9 n\xFAmero multiplicas para cancelar el divisor 3?"
+  - "\xBFEntre cu\xE1nto divides para despejar una sola x?"
+  - "Si x=15, \xBFcu\xE1nto suma el lado izquierdo para comprobar?"
+  resultados:
+  - 6
+  - 3
+  - 4
+  - 14
+  estadosIntermedios:
+  - 14+6
+  - 20 * 3
+  - 60/4
+  - 14 = 14
+  explicacionesMatematicas:
+  - "Al neutralizar el -6 sumando su opuesto en ambos lados, el 14 se convierte en
+    20. Esto es necesario porque antes de tocar la fracci\xF3n, debemos eliminar
+    los t\xE9rminos independientes que est\xE1n sumando o restando"
+  - "La divisi\xF3n se compensa con su operaci\xF3n inversa. Si multiplicamos por
+    3 en ambos lados, la divisi\xF3n desaparece en la izquierda y el 20 se triplica,
+    d\xE1ndonos 60"
+  - "Como el 4 est\xE1 multiplicando a la variable, dividimos todo entre 4. De esta
+    forma, 60 repartido en 4 partes iguales nos revela que cada 'x' vale 15."
+  - "Si al calcular la operaci\xF3n el resultado es id\xE9ntico en ambos lados, significa
+    que el valor encontrado es el correcto y la igualdad se cumple perfectamente."
+  pistas: []
