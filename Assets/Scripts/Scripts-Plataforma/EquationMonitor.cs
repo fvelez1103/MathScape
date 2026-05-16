@@ -21,7 +21,6 @@ public class EquationMonitor : MonoBehaviour
 
     if (valA == valB && valA != 0)
     {
-        // CASO: IGUALDAD
         textoEcuacion.text = $"{valA} = {valB}";
         textGuia.text = "Igualdad alcanzada";
         textGuia.color = colorEquilibrio;

@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-using System.Collections; // <--- Necesario para usar Corrutinas
+using System.Collections;
 
 public class LockDoor : MonoBehaviour
 {
@@ -39,26 +39,21 @@ public class LockDoor : MonoBehaviour
         {
             isUnlocked = true;
             
-            // Iniciamos la corrutina en lugar de desaparecerlo instantáneamente
             StartCoroutine(ProcesoDeDesbloqueo());
         }
     }
 
     private IEnumerator ProcesoDeDesbloqueo()
     {
-        // 1. Damos feedback visual inmediato borrando el número
         UpdateText();
 
-        // 2. Reproducimos el sonido
         if (sonidoDesbloqueo != null)
         {
             AudioSource.PlayClipAtPoint(sonidoDesbloqueo, transform.position, volumenSonido);
         }
 
-        // 3. Esperamos el tiempo indicado
         yield return new WaitForSeconds(retrasoDesbloqueo);
 
-        // 4. Ahora sí, desaparecemos el candado y validamos
         gameObject.SetActive(false); 
         CheckAllLocksCleared();
     }
@@ -79,12 +74,6 @@ public class LockDoor : MonoBehaviour
 
         if (allClear)
         {
-            // ELIMINAMOS O COMENTAMOS ESTA PARTE:
-            /*
-            MetricasPuzzleNivel metricas = Object.FindFirstObjectByType<MetricasPuzzleNivel>();
-            if (metricas != null) { metricas.FinalizarNivel(); }
-            */
-
             Debug.Log("<color=yellow>Todos los candados abiertos. El nivel sigue activo hasta que el jugador cruce la meta.</color>");
         }
     }

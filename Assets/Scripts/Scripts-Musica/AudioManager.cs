@@ -1,6 +1,5 @@
 using UnityEngine;
 
-// 1. Creamos esta estructura para "unir" una canción con su volumen ideal en el Inspector
 [System.Serializable]
 public struct CancionAjustada
 {
@@ -14,7 +13,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource audioSource;
 
     [Header("Configura tus 3 canciones aquí")]
-    public CancionAjustada[] listaDeCanciones; // Esto aparecerá en el Inspector
+    public CancionAjustada[] listaDeCanciones;
 
     private void Awake()
     {
@@ -41,18 +40,16 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        // 2. Buscamos la canción en nuestra lista para ver qué volumen le toca
-        float volumenEncontrado = 0.5f; // Volumen por defecto
+        float volumenEncontrado = 0.5f;
         foreach (CancionAjustada item in listaDeCanciones)
         {
             if (item.cancion == nuevaMusica)
             {
                 volumenEncontrado = item.volumenIdeal;
-                break; // Encontramos la canción, dejamos de buscar
+                break;
             }
         }
 
-        // 3. Aplicamos la lógica de cambio de música con el volumen correcto
         if (audioSource.clip == nuevaMusica) 
         {
             audioSource.volume = volumenEncontrado;

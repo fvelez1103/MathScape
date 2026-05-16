@@ -21,16 +21,13 @@ public class EncuentroInicial : MonoBehaviour
     {
         yaSePresento = true;
 
-        // 1. Congelar el movimiento del jugador
         if (scriptMovimientoJugador != null) scriptMovimientoJugador.enabled = false;
         
         Rigidbody2D rb = scriptMovimientoJugador.GetComponent<Rigidbody2D>();
         if (rb != null) rb.linearVelocity = Vector2.zero;
 
-        // 2. Breve pausa para suavizar el frenado antes de abrir la UI (opcional)
         yield return new WaitForSeconds(0.2f);
 
-        // 3. Iniciar directamente el formulario
         if (formularioUI != null)
         {
             formularioUI.MostrarFormulario();

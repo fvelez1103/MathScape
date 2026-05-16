@@ -63,13 +63,11 @@ public class PuertaMatematica : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !isTransitioning)
         {
-            // Primero, nos aseguramos de que el jugador no esté ya muerto (por si chocan al mismo milisegundo)
             Player scriptJugador = collision.GetComponent<Player>();
             if (scriptJugador != null && scriptJugador.estaMuerto) return;
 
             isTransitioning = true; 
 
-            // --- LA SOLUCIÓN: CONGELAR AL VILLANO ---
             RastreadorSombra villanoSombra = Object.FindAnyObjectByType<RastreadorSombra>();
             if (villanoSombra != null)
             {

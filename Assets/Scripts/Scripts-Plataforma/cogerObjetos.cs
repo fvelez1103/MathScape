@@ -28,7 +28,6 @@ public class cogerObjetos : MonoBehaviour
         if(promptE) promptE.SetActive(false);
         if(promptRQ) promptRQ.SetActive(false);
 
-        // Iniciamos el cronómetro para ver cuánto tarda en actuar
         tiempoInicioNivel = Time.unscaledTime;
     }
 
@@ -103,7 +102,6 @@ public class cogerObjetos : MonoBehaviour
 
     void TomarObjeto(GameObject obj)
     {
-        // --- NUEVO: Registro de parálisis por análisis ---
         if (!primerMovimientoRegistrado && nivelID != 0)
         {
             primerMovimientoRegistrado = true;
@@ -113,7 +111,6 @@ public class cogerObjetos : MonoBehaviour
                 Debug.Log($"<color=cyan>M1 DDA:</color> Primer movimiento registrado en {tiempoTardado:F2}s");
             }
         }
-        // ------------------------------------------------
 
         Rigidbody rb = obj.GetComponentInParent<Rigidbody>();
         if (rb != null) 

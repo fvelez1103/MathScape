@@ -7,16 +7,13 @@ public class DDA_Logger : MonoBehaviour
 
     void Start()
     {
-        // Define la ruta
         rutaArchivo = Application.dataPath + "/Log_DDA_Fuzzy.csv";
         
-        // Escribe el encabezado si el archivo no existe
         if (!File.Exists(rutaArchivo))
         {
             File.WriteAllText(rutaArchivo, "Tiempo;ErrorMat;Caidas;NivelFrustracion;Estado\n");
         }
 
-        // --- EL RASTREADOR ---
         Debug.Log($"<color=cyan>DDA Logger Activo:</color> Guardando datos en: {rutaArchivo}");
 
         DDA_DifusoPuro.OnCambioEstado += RegistrarCambio;

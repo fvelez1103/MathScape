@@ -133,7 +133,6 @@ public class PlayerController : MonoBehaviour
         Vector3 dir = input.ReadMovement(); 
         if (dir == Vector3.zero) return; 
         
-        // AQUÍ ES DONDE SE VALIDA QUE NO HAYA PARED
         if (IsValidMove(dir)) 
         { 
             // --- REPRODUCCIÓN DE SONIDO ---

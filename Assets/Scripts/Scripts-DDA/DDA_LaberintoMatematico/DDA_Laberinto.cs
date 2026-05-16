@@ -65,7 +65,6 @@ public class DDA_Laberinto : MonoBehaviour
 
     private void EjecutarMotorMamdani_Asistencia()
     {
-        // Se desplazaron los umbrales para que la velocidad cambie en la 4ta muerte en lugar de la 3ra
         float muertesBajas = Func_HombroIzquierdo(muertesNPC, 2f, 3f);
         float muertesMedias = Func_Triangulo(muertesNPC, 2f, 3f, 4f);
         float muertesAltas = Func_HombroDerecho(muertesNPC, 3f, 4f);
@@ -94,27 +93,20 @@ public class DDA_Laberinto : MonoBehaviour
         }
     }
 
-    // --- MOTOR MAMDANI 2: ENRUTAMIENTO ACTUALIZADO ---
     public string DeterminarSiguienteLaberinto()
     {
         int totalErrores = muertesNPC + erroresPuerta;
 
-        // 1. Fuzzificación Calibrada
-        // Experto: 100% con 0 o 1 error. Cae a 0 al llegar a 2.5 errores.
         float errBajos = Func_HombroIzquierdo(totalErrores, 1.1f, 2.5f);
         
-        // Medio: Pico en 2.5 errores (cubre el rango de 2 y 3 errores).
         float errMedios = Func_Triangulo(totalErrores, 1.5f, 2.5f, 4.5f);
         
-        // Novato: Empieza a subir después de 3 errores. 100% en 4.5 errores.
         float errAltos = Func_HombroDerecho(totalErrores, 3.5f, 4.5f);
 
-        // 2. Inferencia
         float reglaExperto = errBajos;
         float reglaMedio = errMedios;
         float reglaNovato = errAltos;
 
-        // 3. Defuzzificación por Centroide
         float sumaNum = 0f;
         float sumaDen = 0f;
         for (int i = 0; i <= 20; i++)
@@ -132,10 +124,9 @@ public class DDA_Laberinto : MonoBehaviour
         nivelHabilidadGlobal = (sumaDen != 0) ? (sumaNum / sumaDen) : 50f;
         Debug.Log($"<color=lime>DDA Laberinto:</color> Habilidad Final = {nivelHabilidadGlobal:F1}% con {totalErrores} errores totales.");
 
-        // 4. Decisión Final basada en Habilidad Global
-        if (nivelHabilidadGlobal >= 70f) return "Laberinto-5.4"; // Ruta Difícil (Experto)
-        else if (nivelHabilidadGlobal >= 35f) return "Laberinto-5.3"; // Ruta Media (Medio)
-        else return "Laberinto-5.2"; // Ruta Fácil (Novato)
+        if (nivelHabilidadGlobal >= 70f) return "Laberinto-5.4";
+        else if (nivelHabilidadGlobal >= 35f) return "Laberinto-5.3";
+        else return "Laberinto-5.2";
     }
 
     private float CalcularCentroide(float rBaja, float rMedia, float rAlta)

@@ -44,7 +44,6 @@ public class MovimientoJugador : MonoBehaviour
 
    void Update()
 {
-    // --- CONTROL DE DIÁLOGO (REFORZADO) ---
     if (estaEnDialogo)
     {
         inputMovimiento = UnityEngine.Vector2.zero;
@@ -52,13 +51,11 @@ public class MovimientoJugador : MonoBehaviour
         Animacion.SetFloat("movimiento", 0f);
         return; 
     }
-    // --------------------------------------
 
     movimiento = 2.7f;
     inputMovimiento.x = Input.GetAxisRaw("Horizontal");
     inputMovimiento.y = Input.GetAxisRaw("Vertical");
 
-    // ... (resto del código igual)
 
         inputMovimiento = Vector2.ClampMagnitude(inputMovimiento, 1f);
 
@@ -89,7 +86,6 @@ public class MovimientoJugador : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && enSuelo) inputSalto = true;
         Animacion.SetBool("enSuelo", enSuelo);
 
-        // --- LÓGICA DE SONIDO DE PASOS ---
         bool seEstaMoviendo = inputMovimiento.magnitude > 0.1f;
 
         if (seEstaMoviendo && enSuelo)
@@ -112,7 +108,6 @@ public class MovimientoJugador : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Si estamos en diálogo, el Rigidbody no debería moverse horizontalmente
         if (estaEnDialogo)
         {
             theRB.linearVelocity = new UnityEngine.Vector3(0, theRB.linearVelocity.y, 0);

@@ -21,8 +21,8 @@ public class GestorQuizFinal : MonoBehaviour
     [Header("Conexiones UI - Panel Quiz")]
     public GameObject panelQuiz;
     public TextMeshProUGUI textoPregunta;
-    public TextMeshProUGUI[] textosBotones; // Los 4 textos de las opciones
-    public Button[] botonesOpciones;        // Los 4 botones
+    public TextMeshProUGUI[] textosBotones;
+    public Button[] botonesOpciones;
 
     [Header("Conexiones UI - Panel Resultados")]
     public GameObject panelResultados;
@@ -50,7 +50,7 @@ public class GestorQuizFinal : MonoBehaviour
     private bool esperandoSiguiente = false;
     private float tiempoInicioPregunta;
     
-    private bool enviandoDatos = false; // <--- CANDADO ANTI-SPAM AÑADIDO
+    private bool enviandoDatos = false;
 
     void Start()
     {
@@ -218,8 +218,8 @@ public class GestorQuizFinal : MonoBehaviour
 
     public void FinalizarTodoElJuego()
     {
-        if (enviandoDatos) return; // <--- REBOTA CLICS ADICIONALES
-        enviandoDatos = true;      // <--- CIERRA EL CANDADO
+        if (enviandoDatos) return;
+        enviandoDatos = true;
 
         StartCoroutine(RutinaFinalizarJuego());
     }

@@ -63,7 +63,6 @@ public class cuadricullaPiedra_Ayuda : MonoBehaviour
 
     if (DDA_cuadriculaPiedra.Instancia != null)
     {
-        // Llamamos a la función que guarda en la memoria persistente
         DDA_cuadriculaPiedra.Instancia.RegistrarUsoDeAyuda();
     }
     Debug.Log("<color=yellow>DDA Puzzle:</color> Mostrando solución. Marcando ayuda en DDA.");

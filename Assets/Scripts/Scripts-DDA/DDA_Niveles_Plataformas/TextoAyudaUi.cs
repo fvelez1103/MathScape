@@ -8,10 +8,8 @@ public class TextoAyudaUi : MonoBehaviour
 
     private void Start()
     {
-        // 1. Nos suscribimos para escuchar los gritos del Cerebro (DDA)
         DDA_DifusoPuro.OnCambioEstado += EvaluarAyuda;
 
-        // 2. Revisamos cómo viene el jugador nada más cargar este nivel
         if (DDA_DifusoPuro.Instancia != null)
         {
             EvaluarAyuda(DDA_DifusoPuro.Instancia.estadoActual);
@@ -20,7 +18,6 @@ public class TextoAyudaUi : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Vital: Si este nivel se destruye, dejamos de escuchar al DDA
         DDA_DifusoPuro.OnCambioEstado -= EvaluarAyuda;
     }
 

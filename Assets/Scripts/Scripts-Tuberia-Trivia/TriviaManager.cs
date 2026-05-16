@@ -14,16 +14,15 @@ public class TriviaManager : MonoBehaviour
 
     private void Awake()
     {
-        // ¡LA CURA PARA LA AMNESIA!
         if (Instancia == null) 
         {
             Instancia = this;
-            DontDestroyOnLoad(gameObject); // Esto lo hace inmortal entre escenas
-            CargarPreguntasDesdeCSV();     // Solo se carga una vez en todo el juego
+            DontDestroyOnLoad(gameObject);
+            CargarPreguntasDesdeCSV();
         }
         else 
         {
-            Destroy(gameObject); // Evita clones si vuelves a la escena original
+            Destroy(gameObject);
         }
     }
 

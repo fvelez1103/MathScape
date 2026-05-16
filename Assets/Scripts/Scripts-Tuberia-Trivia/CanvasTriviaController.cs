@@ -130,12 +130,10 @@ public class CanvasTriviaController : MonoBehaviour
 
         bool esCorrecta = (indexSeleccionado == respuestaCorrectaIndex);
         
-        // --- NUEVO: Extraemos el texto literal que eligió el usuario ---
         string textoElegido = textosRespuestas[indexSeleccionado].text;
 
         if (pantallaActual != null)
         {
-            // Enviamos el texto elegido a la pantalla
             pantallaActual.RegistrarIntento(esCorrecta, textoElegido);
         }
 

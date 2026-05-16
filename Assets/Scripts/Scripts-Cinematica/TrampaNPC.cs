@@ -10,10 +10,10 @@ public class TrampaNPC : MonoBehaviour
         {
             if (puertaCelda != null)
             {
-                puertaCelda.SetActive(true); // Al activarse, la puerta hará sonar su propio script
+                puertaCelda.SetActive(true);
             }
 
-            gameObject.SetActive(false); // La trampa se apaga sin interrumpir el sonido
+            gameObject.SetActive(false);
         }
     }
 }

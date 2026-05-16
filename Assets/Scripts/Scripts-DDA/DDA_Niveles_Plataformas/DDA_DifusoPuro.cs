@@ -70,7 +70,6 @@ public class DDA_DifusoPuro : MonoBehaviour
 
     private void Update()
     {
-        // El DDA solo avanza si NO estamos en zona segura y el objetivo NO está completado
         if (estaEnEscenaValida && !enZonaSegura && !objetivoCompletado)
         {
             tiempoEnEscena += Time.deltaTime;
@@ -165,7 +164,7 @@ public class DDA_DifusoPuro : MonoBehaviour
         tiempoEnEscena = 0f;
         nivelFrustracionCrisp = 0f;
         estadoActual = EstadoJugador.Optimo;
-        objetivoCompletado = false; // Reiniciamos el freno para el nuevo nivel
+        objetivoCompletado = false;
         
         OnCambioEstado?.Invoke(estadoActual);
         Debug.Log($"<color=white>DDA:</color> Memoria guardada ({estadoNivelAnterior}). Contadores reiniciados.");

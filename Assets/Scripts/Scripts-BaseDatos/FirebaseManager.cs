@@ -41,7 +41,6 @@ public class FirebaseManager : MonoBehaviour
                 FirebaseApp app = FirebaseApp.Create(opciones, "MathScapeApp");
                 baseDatos = FirebaseDatabase.GetInstance(app, urlDatabase).RootReference;
                 
-                // Generamos el ID único de sesión aquí para evitar choques de nombres
                 idSesionActual = Guid.NewGuid().ToString();
                 tiempoInicio = Time.unscaledTime; 
                 
@@ -55,10 +54,8 @@ public class FirebaseManager : MonoBehaviour
     public void RegistrarPerfilInicial(string nombre, int edad, int conocimiento) {
         if (baseDatos == null) return;
 
-        // Capturamos la fecha y hora actual del sistema
         string fechaHoraActual = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
 
-        // Pasamos la fecha al constructor del perfil
         PerfilEstudiante perfil = new PerfilEstudiante(nombre, edad, conocimiento, fechaHoraActual);
         
         string json = JsonUtility.ToJson(perfil);

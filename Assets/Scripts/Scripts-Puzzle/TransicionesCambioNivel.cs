@@ -44,8 +44,6 @@ public class TransicionesCambioNivel : MonoBehaviour
                 }
             }
             
-            // ERROR CORREGIDO: Antes había dos StartCoroutine seguidos aquí. 
-            // Con uno solo es suficiente y más seguro para Unity.
             StartCoroutine(SceneLoad(sceneToLoad));
         }
     }

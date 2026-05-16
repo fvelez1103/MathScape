@@ -21,7 +21,6 @@ public class GridManager : MonoBehaviour
         Instance = this;
     }
 
-    // ===================== TILES =====================
 
     public void RegisterTile(Vector3 worldPos)
     {
@@ -34,7 +33,6 @@ public class GridManager : MonoBehaviour
         return validTiles.Contains(cell);
     }
 
-    // ===================== CUBES =====================
 
     public void RegisterCube(Vector2Int cell, MagneticCube cube)
     {
@@ -69,7 +67,6 @@ public class GridManager : MonoBehaviour
         return cube;
     }
 
-    // ===================== OPERATORS =====================
 
     public void RegisterOperator(Vector2Int cell, OperatorPickup op)
     {
@@ -104,7 +101,6 @@ public class GridManager : MonoBehaviour
         return op;
     }
 
-    // ===================== HELPERS =====================
 
     Vector2Int WorldToGrid(Vector3 pos)
     {

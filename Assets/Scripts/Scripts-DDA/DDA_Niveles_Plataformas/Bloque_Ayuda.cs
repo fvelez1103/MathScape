@@ -19,12 +19,10 @@ public class BloqueAyuda : MonoBehaviour
         
         foreach (MeshRenderer r in todosLosRenderers)
         {
-            // Filtro para no agarrar el texto ni objetos vacíos
             if (r == null || r.gameObject.name.Contains("Text") || r.gameObject.name.Contains("numero")) continue;
 
             if (r.sharedMaterial != null)
             {
-                // Capturamos el color base
                 colorOriginalDeLaRoca = r.sharedMaterial.GetColor("_EmissionColor");
 
                 Material mat = r.material; 
@@ -39,7 +37,6 @@ public class BloqueAyuda : MonoBehaviour
 
     void Start() 
     {
-        // Forzamos que el script esté activado
         this.enabled = true;
 
         if(DDA_DifusoPuro.Instancia != null) 
@@ -49,7 +46,6 @@ public class BloqueAyuda : MonoBehaviour
     void OnEnable() 
     {
         DDA_DifusoPuro.OnCambioEstado += EscucharDDA;
-        // Si el DDA ya existe, actualizamos el estado de inmediato
         if(DDA_DifusoPuro.Instancia != null) EscucharDDA(DDA_DifusoPuro.Instancia.estadoActual);
     }
 

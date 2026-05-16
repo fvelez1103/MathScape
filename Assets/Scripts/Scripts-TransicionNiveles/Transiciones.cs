@@ -38,12 +38,10 @@ public class Transiciones : MonoBehaviour
 
         if (minijuegoActual == TipoMinijuego.M1_Plataformas)
         {
-            // SOLO ENVIAMOS EL DDA. El tiempo lo enviará el CronometroM1 automáticamente.
             FirebaseManager.Instancia.M1_CapturarDDA(nivelID);
         }
         else if (minijuegoActual == TipoMinijuego.M6_Laberinto)
         {
-            // El laberinto sí envía su tiempo y DDA desde aquí
             float tiempoTotal = Time.time - tiempoInicioNivel;
             float tiempoRedondeado = (float)System.Math.Round(tiempoTotal, 2);
             

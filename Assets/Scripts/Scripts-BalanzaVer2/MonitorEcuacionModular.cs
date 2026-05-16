@@ -47,7 +47,6 @@ public class MonitorEcuacionModular : MonoBehaviour
 
         if (iguales)
         {
-            // --- CONEXIÓN: DETENER DDA ---
             if (DDA_DifusoPuro.Instancia != null && !DDA_DifusoPuro.Instancia.objetivoCompletado)
             {
                 DDA_DifusoPuro.Instancia.objetivoCompletado = true;
@@ -63,7 +62,6 @@ public class MonitorEcuacionModular : MonoBehaviour
         }
         else
         {
-            // --- CONEXIÓN: REACTIVAR DDA SI DESHACE EL PUZZLE ---
             if (DDA_DifusoPuro.Instancia != null && DDA_DifusoPuro.Instancia.objetivoCompletado)
             {
                 DDA_DifusoPuro.Instancia.objetivoCompletado = false;

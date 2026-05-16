@@ -87,20 +87,17 @@ public class Player : MonoBehaviour
             estaMuerto = true;
             movement = Vector2.zero; 
 
-            // 1. EL FRENO DE MANO ABSOLUTO (Congela posición y rotación)
             if (rb != null)
             {
                 rb.linearVelocity = Vector2.zero; 
                 rb.constraints = RigidbodyConstraints2D.FreezeAll; 
             }
             
-            // 2. CORTAMOS EL SONIDO DE LOS PASOS
             if (fuenteSonido != null)
             {
                 fuenteSonido.Stop(); 
             }
             
-            // 3. APAGAMOS LA ANIMACIÓN DE CAMINAR A LA FUERZA
             if (anim != null) 
             {
                 anim.SetBool("estaCaminando", false);
@@ -109,7 +106,6 @@ public class Player : MonoBehaviour
                 anim.SetTrigger("Morir");
             }
 
-            // 4. APAGAMOS ESTE SCRIPT (Ignora el teclado y el Update por completo)
             this.enabled = false;
         }
     }

@@ -58,14 +58,14 @@ public class DDA_cuadriculaPiedra : MonoBehaviour
         if (nivelID == ultimoIDRegistrado) 
         {
             ayudaActivada = ayudaPersistente; 
-            frustracionMaximaEnNivel = frustracionPersistente; // Recuperamos el pico de frustración
+            frustracionMaximaEnNivel = frustracionPersistente;
             Debug.Log($"<color=yellow>DDA:</color> Reinicio nivel {nivelID}. Recuperando frustración máxima: {frustracionMaximaEnNivel:F1}");
         }
         else 
         {
             ayudaActivada = false;
             ayudaPersistente = false;
-            frustracionPersistente = 0f; // Reset real solo si cambia el ID del nivel
+            frustracionPersistente = 0f;
             frustracionMaximaEnNivel = 0f;
             ultimoIDRegistrado = nivelID;
             Debug.Log($"<color=green>DDA:</color> Nivel nuevo {nivelID}. Reseteando memoria persistente.");
@@ -103,21 +103,18 @@ public class DDA_cuadriculaPiedra : MonoBehaviour
         tiempoEnNivelActual = 0f; 
         ayudaActivada = false;   
         nivelFrustracionPuzzle = 0f;
-        // NOTA: NO reseteamos frustracionMaximaEnNivel aquí para que Firebase la capture al final
     }
 
     public void RegistrarFinDeNivel()
     {
         nivelesCompletados++;
 
-        // Hacemos que la habilidad se calcule siempre, no solo en el nivel 2, para que sea dinámica
-        if (nivelesCompletados <= 6) // Extendemos el rango de actualización
+        if (nivelesCompletados <= 6)
         {
             acumuladoResets += totalResets;
             acumuladoUndos += totalUndos;
             acumuladoTiempo += tiempoEnNivelActual;
             
-            // Recalculamos perfil para que varíe según el desempeño actual
             CalcularPerfilHabilidadMamdani();
         }
 
@@ -126,8 +123,6 @@ public class DDA_cuadriculaPiedra : MonoBehaviour
 
     private void EjecutarMamdaniFrustracion()
     {
-        // --- SENSIBILIDAD AJUSTADA PARA LA TESIS ---
-        // Antes: 25s y 8 resets. Ahora: 15s y 3 resets para que detecte frustración real.
         float tiempoBase = ayudaHistorialVista ? 8f : 15f; 
         float tiempoLargo = Mathf.Clamp01((tiempoEnNivelActual - tiempoBase) / 20f); 
         
@@ -136,7 +131,6 @@ public class DDA_cuadriculaPiedra : MonoBehaviour
         float r_Alta = Mathf.Max(tiempoLargo, muchosResets);
         nivelFrustracionPuzzle = r_Alta * 100f; 
 
-        // --- MEMORIA DE PICO MÁXIMO ---
         if (nivelFrustracionPuzzle > frustracionMaximaEnNivel)
         {
             frustracionMaximaEnNivel = nivelFrustracionPuzzle;
@@ -156,28 +150,21 @@ public class DDA_cuadriculaPiedra : MonoBehaviour
 
    private void CalcularPerfilHabilidadMamdani()
     {
-        // --- 1. AJUSTE DE SENSIBILIDAD (Hacerlo más difícil de ser "Experto") ---
-        // Para ser rápido, ahora debe bajar de 25s (antes 30s era muy fácil)
         float h_Rapido = 1 - Mathf.Clamp01((acumuladoTiempo - 15f) / 30f); 
         float h_Lento = Mathf.Clamp01((acumuladoTiempo - 45f) / 50f);
         float h_TiempoMedio = Mathf.Max(0, 1 - Mathf.Abs(acumuladoTiempo - 35f) / 20f); 
 
-        // Para tener "Pocos Errores", ahora máximo 2 (antes 4 era muy permisivo)
         float totalErrores = acumuladoResets + acumuladoUndos; 
         float h_PocosErrores = 1 - Mathf.Clamp01(totalErrores / 2f);
         float h_MuchosErrores = Mathf.Clamp01((totalErrores - 3f) / 6f); 
 
-        // --- 2. REGLAS MAMDANI ---
-        float reglaExperto = Mathf.Min(h_Rapido, h_PocosErrores); // Rápido Y preciso
-        float reglaNovato = Mathf.Max(h_Lento, h_MuchosErrores);  // Lento O con fallos
+        float reglaExperto = Mathf.Min(h_Rapido, h_PocosErrores); 
+        float reglaNovato = Mathf.Max(h_Lento, h_MuchosErrores); 
         float reglaMedio = h_TiempoMedio; 
 
-        // --- 3. DEFUZZIFICACIÓN (CENTROIDE) ---
         float numerador = 0, denominador = 0;
         for (int i = 0; i <= 100; i += 5)
         {
-            // Definimos las áreas de salida: 
-            // Novato se concentra en el 0-30, Medio en 50, Experto en 70-100
             float mu_Novato = Mathf.Min(reglaNovato, (30f - i) / 30f); // Pico en 0
             float mu_Medio = Mathf.Min(reglaMedio, Mathf.Max(0, 1 - Mathf.Abs(i - 50f) / 25f)); // Pico en 50
             float mu_Experto = Mathf.Min(reglaExperto, (i - 70f) / 30f); // Pico en 100
@@ -220,8 +207,6 @@ public class DDA_cuadriculaPiedra : MonoBehaviour
         tiempoTotalHistoricoNivel = 0f;
         ayudaActivada = false;
         ayudaHistorialVista = false;
-        // NOTA: No reseteamos frustracionMaximaEnNivel aquí para que el FirebaseManager 
-        // pueda leerlo al final del nivel antes de que cambie el ID en el Start
     }
 
     public void GenerarReporteTesis()

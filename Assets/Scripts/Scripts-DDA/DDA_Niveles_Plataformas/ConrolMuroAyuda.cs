@@ -31,11 +31,8 @@ public class ControlMuroAyuda : MonoBehaviour
     {
         bool debeEstarActivo = false;
 
-        // --- LÓGICA CONTEXTUAL PARA LA TESIS ---
         if (esProteccionContraCaidas)
         {
-            // Las PAREDES solo se activan en estado Crítico (Bloqueado) 
-            // Y SI el jugador realmente se está cayendo (3 o más caídas).
             if (nuevoEstado == EstadoJugador.Bloqueado && DDA_DifusoPuro.Instancia.caidasAlVacio >= 3)
             {
                 debeEstarActivo = true;
@@ -43,15 +40,12 @@ public class ControlMuroAyuda : MonoBehaviour
         }
         else
         {
-            // Las PISTAS (Textos/Brillos) se activan normalmente 
-            // cuando el estado deja de ser Óptimo (por tiempo, resets o fallos).
             if (nuevoEstado != EstadoJugador.Optimo)
             {
                 debeEstarActivo = true;
             }
         }
 
-        // Aplicar el estado al objeto
         if (visualMuro != null)
         {
             visualMuro.SetActive(debeEstarActivo);

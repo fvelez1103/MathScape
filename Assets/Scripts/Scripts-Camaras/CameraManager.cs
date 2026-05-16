@@ -14,7 +14,6 @@ public class CameraManager : MonoBehaviour
     {
         ActivarCamaraPrincipal(camarasPrincipales[0]);
 
-        // Asegurar que las secundarias estén apagadas al inicio
         foreach (Camera cam in camarasSecundarias)
         {
             cam.gameObject.SetActive(false);

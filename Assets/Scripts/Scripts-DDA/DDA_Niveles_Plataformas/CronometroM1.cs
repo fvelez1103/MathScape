@@ -5,15 +5,12 @@ public class CronometroM1 : MonoBehaviour
     [Header("Configuración")]
     public int nivelID;
 
-    // --- VARIABLES ESTÁTICAS (Memoria entre escenas) ---
     private static float alcanciaTiempoHistorico = 0f;
-    private static float tiempoAcumuladoIntentoBueno = 0f; // <--- NUEVO: Salva tu progreso al entrar a un puzzle
+    private static float tiempoAcumuladoIntentoBueno = 0f;
     private static int ultimoNivelID = -1;
     
-    // Lo hacemos público para que el MonitorEcuacion sepa en qué nivel estamos
     public static int nivelActualID = -1; 
 
-    // --- VARIABLES DE INSTANCIA ---
     private float tiempoInicioIntento;
     private bool yaRegistrado = false;
     private bool tiempoYaGuardadoEnEsteTramo = false;
@@ -22,7 +19,6 @@ public class CronometroM1 : MonoBehaviour
     {
         nivelActualID = nivelID; 
 
-        // Si cambiamos de nivel (ej. de M1-11 a M1-12), vaciamos TODO
         if (ultimoNivelID != nivelID)
         {
             alcanciaTiempoHistorico = 0f;
@@ -37,7 +33,6 @@ public class CronometroM1 : MonoBehaviour
 
     void Update()
     {
-        // REINICIO CON F: Se guarda en la alcancía, pero el "Intento Bueno" se BORRA porque morimos.
         if (Input.GetKeyDown(KeyCode.F) && !yaRegistrado && !tiempoYaGuardadoEnEsteTramo)
         {
             float delta = Time.unscaledTime - tiempoInicioIntento;
@@ -47,21 +42,20 @@ public class CronometroM1 : MonoBehaviour
                 FirebaseManager.Instancia.M1_SumarTiempoHistorico(nivelID, delta);
             }
 
-            tiempoAcumuladoIntentoBueno = 0f; // <--- Castigo: El intento bueno vuelve a 0
+            tiempoAcumuladoIntentoBueno = 0f;
             tiempoYaGuardadoEnEsteTramo = true;
 
             Debug.Log("<color=orange><b>[REINICIO]</b></color> Tiempo al historial. Intento bueno reseteado.");
         }
     }
 
-    // Al entrar a una puerta, sumamos a la alcancía Y guardamos el intento bueno para no perderlo
     public void GuardarTiempoAntesDeSalir()
     {
         if (tiempoYaGuardadoEnEsteTramo) return;
 
         float delta = Time.unscaledTime - tiempoInicioIntento;
         alcanciaTiempoHistorico += delta;
-        tiempoAcumuladoIntentoBueno += delta; // <--- Supervivencia: Guardamos el progreso de este tramo
+        tiempoAcumuladoIntentoBueno += delta;
         
         if (FirebaseManager.Instancia != null) {
             FirebaseManager.Instancia.M1_SumarTiempoHistorico(nivelID, delta);

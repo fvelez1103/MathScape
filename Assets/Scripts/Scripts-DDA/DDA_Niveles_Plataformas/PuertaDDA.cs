@@ -38,7 +38,6 @@ public class PuertaDDA : MonoBehaviour
                       $"Valor Crisp: {frustracionFinal}");
             DDA_DifusoPuro.Instancia.LimpiarDDA();
 
-            // Lógica de teletransporte
             switch (estadoFinal)
             {
                 case EstadoJugador.Bloqueado:

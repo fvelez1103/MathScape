@@ -27,13 +27,11 @@ public class LevelManagerBalanza : MonoBehaviour
     public List<Transform> plataformasBase; 
     public Transform zonaPesosLibres;
 
-    // --- LA MAGIA: Cambiamos Awake por Start para esperar al DDA ---
     void Start() 
     {
         CargarNivel();
     }
 
-    // --- DEVOLVEMOS LA LIMPIEZA PARA BORRAR BLOQUES FANTASMAS ---
     void LimpiarNivel()
     {
         foreach (var plat in plataformasBase)

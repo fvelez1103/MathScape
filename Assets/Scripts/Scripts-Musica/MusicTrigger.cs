@@ -7,7 +7,6 @@ public class MusicTrigger : MonoBehaviour
 
     private void Start()
     {
-        // Apenas carga la escena, le avisa al AudioManager qué pista debe sonar
         if (AudioManager.Instancia != null)
         {
             AudioManager.Instancia.CambiarMusica(musicaDeEsteNivel);

@@ -3,7 +3,7 @@ using UnityEngine;
 public class PalancaReset : MonoBehaviour
 {
     public GameObject panelConfirmacion;
-    public cogerObjetos scriptJugador; // Para bloquear el movimiento mientras decide
+    public cogerObjetos scriptJugador;
     private bool jugadorCerca = false;
 
     [System.Obsolete]
@@ -14,7 +14,6 @@ public class PalancaReset : MonoBehaviour
             AbrirMenu();
         }
 
-        // Atajos de teclado para el menú
         if (panelConfirmacion.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.S)) ConfirmarReset();
@@ -25,7 +24,6 @@ public class PalancaReset : MonoBehaviour
     void AbrirMenu()
     {
         panelConfirmacion.SetActive(true);
-        // Opcional: Bloquear el movimiento del jugador o la cámara aquí
     }
 
     public void CerrarMenu()

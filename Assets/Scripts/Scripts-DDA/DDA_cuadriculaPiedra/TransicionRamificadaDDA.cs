@@ -22,7 +22,6 @@ public class TransicionRamificadaDDA : MonoBehaviour
                 DDA_cuadriculaPiedra.Instancia.RegistrarFinDeNivel();
 
             int siguiente = indexRutaMediaLarga;
-            // ... (resto de tu código)
             if (DDA_cuadriculaPiedra.Instancia != null && DDA_cuadriculaPiedra.Instancia.rutaActual == RutaAsignada.Corta)
             {
                 siguiente = indexRutaCorta;

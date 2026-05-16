@@ -16,11 +16,9 @@ public class GridMover : MonoBehaviour
 
         Vector3 target = transform.position + direction;
 
-        // Validar suelo del jugador
         if (!gridDetector.HasGridAt(target))
             return false;
-
-        // Validar suelo de TODA la cadena
+            
         foreach (Transform t in magneticChain)
         {
             Vector3 chainTarget = t.position + direction;
@@ -56,12 +54,10 @@ public class GridMover : MonoBehaviour
             yield return null;
         }
 
-        // 🟢 SOLUCIÓN: Asignamos la posición exacta final en lugar de redondear a un entero absoluto
         transform.position = end;
 
         foreach (var kvp in chainStart)
         {
-            // Las cajas de la cadena también terminan en su destino relativo exacto
             kvp.Key.position = kvp.Value + dir;
         }
 

@@ -12,7 +12,6 @@ public class TriviaScreen : MonoBehaviour
     public Transform tuberiaARotar; 
     public Vector3 rotacionFinalTuberia;
 
-    // --- NUEVO: SONIDOS (Solo se añadieron estas variables) ---
     [Header("Sonidos")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip sonidoRespuestaCorrecta;
@@ -98,13 +97,11 @@ public class TriviaScreen : MonoBehaviour
 
         if (fueCorrecto)
         {
-            // --- SONIDO EXITO Y TUBERIA ---
             if (audioSource != null)
             {
                 if (sonidoRespuestaCorrecta != null) audioSource.PlayOneShot(sonidoRespuestaCorrecta, volumenGlobal);
                 if (sonidoTuberiaRota != null) audioSource.PlayOneShot(sonidoTuberiaRota, volumenGlobal);
             }
-            // ------------------------------
 
             float tiempoFinalCrudo = Time.unscaledTime - tiempoInicioPregunta;
             float tiempoFinalRedondeado = (float)System.Math.Round(tiempoFinalCrudo, 2);
@@ -127,12 +124,10 @@ public class TriviaScreen : MonoBehaviour
         }
         else
         {
-            // --- SONIDO ERROR / SUELO CAE ---
             if (audioSource != null && sonidoSueloCae != null)
             {
                 audioSource.PlayOneShot(sonidoSueloCae, volumenGlobal);
             }
-            // --------------------------------
 
             fallosEnEstaPregunta++;
             if (DDA_TriviaTuberias.Instancia != null)

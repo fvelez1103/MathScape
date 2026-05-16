@@ -9,14 +9,14 @@ public class CerraduraManager : MonoBehaviour
     public EcuacionData datosEcuacion;
 
     [Header("Configuración de UI Principal")]
-    public UnityEngine.UI.Image imagenEcuacionPrincipal; // Tu PNG en ContenedorEcuacion
+    public UnityEngine.UI.Image imagenEcuacionPrincipal;
     public TextMeshProUGUI textoExplicacion; 
     public TextMeshProUGUI textoPistaVisual; 
 
     [Header("Configuración de Sonidos")]
     public AudioSource fuenteAudio; 
     public AudioClip sonidoAcierto; 
-    public AudioClip sonidoError; // Sonido para feedback negativo
+    public AudioClip sonidoError;
 
     [Header("Configuración de Pasos UI")]
     public GameObject pasoPrefab;
@@ -50,14 +50,13 @@ public class CerraduraManager : MonoBehaviour
     {
         if (puertaAbierta) return;
 
-        // 🟢 NUEVO: Detección estricta de salida temporal
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (activadorEscena != null)
             {
                 activadorEscena.PausarMinijuego();
             }
-            return; // Cortamos el Update aquí para que no registre nada más
+            return;
         }
 
         tiempoEnPasoActual += Time.deltaTime; 
@@ -159,7 +158,6 @@ public class CerraduraManager : MonoBehaviour
     {
         if (textoExplicacion != null && datosEcuacion.explicacionesMatematicas != null && datosEcuacion.explicacionesMatematicas.Length > indice)
         {
-            // Limpiamos el string para asegurar que no haya caracteres ocultos
             string exp = datosEcuacion.explicacionesMatematicas[indice];
             textoExplicacion.text = "Explicación matemática:\n" + exp;
         }

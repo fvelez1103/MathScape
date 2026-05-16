@@ -31,7 +31,6 @@ public class DialogoSorpresa : MonoBehaviour
     [System.Obsolete]
     IEnumerator SecuenciaSorpresa()
     {
-        // 1. Congelar al jugador (Físicas y Animación) apenas entra al trigger
         if (scriptMovimientoJugador != null) 
         {
             scriptMovimientoJugador.enabled = false;
@@ -46,19 +45,14 @@ public class DialogoSorpresa : MonoBehaviour
             animadorJugador.speed = 0f;
         }
 
-        // 2. Animar bordes
         yield return StartCoroutine(AnimarBordes(anchuraBorde));
 
-        // 3. Mostrar el diálogo
         scriptDialogoFinal.StartDialogue();
 
-        // 4. Esperar a que el diálogo termine
         yield return new WaitUntil(() => scriptDialogoFinal.didDialogueStart == false);
 
-        // 5. Quitar los bordes
         yield return StartCoroutine(AnimarBordes(0f));
 
-        // 6. Descongelar al jugador
         if (animadorJugador != null) animadorJugador.speed = 1f; 
         if (scriptMovimientoJugador != null) scriptMovimientoJugador.enabled = true;
     }

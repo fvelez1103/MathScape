@@ -8,7 +8,7 @@ public class ExponentCanvasController : MonoBehaviour
     public GameObject canvasUI;
     public MonoBehaviour playerMovementScript;
     public TextMeshProUGUI equationText; 
-    public GameObject primerBoton; // Obligatorio para el WASD
+    public GameObject primerBoton;
 
     [Header("Diseño del Puzzle")]
     [Tooltip("El texto de la ecuación en cada etapa. Ej: [0] x^2 * x^3, [1] x^(2+3), [2] x^5")]
@@ -27,7 +27,6 @@ public class ExponentCanvasController : MonoBehaviour
         currentStepIndex = 0;
         ActualizarTexto();
         
-        // Bloqueo crítico de WASD: Fuerza a Unity a mirar el primer botón
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(primerBoton);
     }
@@ -42,7 +41,7 @@ public class ExponentCanvasController : MonoBehaviour
             
             if (currentStepIndex >= correctButtonSequence.Length)
             {
-                ActualizarTexto(); // Muestra el resultado final antes de cerrar
+                ActualizarTexto();
                 CompletarMinijuego();
             }
             else
@@ -53,7 +52,7 @@ public class ExponentCanvasController : MonoBehaviour
         else
         {
             Debug.LogWarning("El jugador falló la secuencia. Castigo aplicado.");
-            currentStepIndex = 0; // Se reinicia todo
+            currentStepIndex = 0;
             ActualizarTexto();
         }
     }
@@ -69,7 +68,6 @@ public class ExponentCanvasController : MonoBehaviour
     private void CompletarMinijuego()
     {
         Debug.Log("Minijuego superado.");
-        // Tu lógica de victoria va aquí.
         
         canvasUI.SetActive(false);
         if (playerMovementScript != null) playerMovementScript.enabled = true;

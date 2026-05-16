@@ -140,7 +140,6 @@ public class RastreadorSombra : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    // --- NUEVO MÉTODO PARA DETENERLO DESDE AFUERA ---
     public void DetenerSombra()
     {
         puedePerseguir = false;

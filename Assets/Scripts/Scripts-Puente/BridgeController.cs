@@ -54,7 +54,6 @@ public class BridgeController : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            // x lógico centrado
             float x = (i - count / 2f) * spacing;
 
             float y = a * x * x + b * x + c;
@@ -69,15 +68,12 @@ public class BridgeController : MonoBehaviour
 {
     int count = segments.Length;
 
-    // X lógico del primer y último segmento
     float xLeft = (0 - count / 2f) * spacing;
     float xRight = ((count - 1) - count / 2f) * spacing;
 
-    // Y calculado por la ecuación
     float yLeft = a * xLeft * xLeft + b * xLeft + c;
     float yRight = a * xRight * xRight + b * xRight + c;
 
-    // Y real de los targets
     float leftTargetY = leftTarget.position.y;
     float rightTargetY = rightTarget.position.y;
 

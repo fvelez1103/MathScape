@@ -28,7 +28,6 @@ public class Dialogue : MonoBehaviour
 
     void Update()
     {
-        // Si el diálogo es de un solo uso y ya terminó, bloqueamos la tecla E por completo
         if (dialogoCompletado) return; 
 
         if((isPlayerInRange || didDialogueStart) && Input.GetKeyDown(KeyCode.E))
@@ -87,15 +86,13 @@ public class Dialogue : MonoBehaviour
         CongelarEntidad(jugadorObjeto, false);
         CongelarEntidad(villanoObjeto, false);
 
-        // --- LÓGICA DEL CANDADO ---
         if (esUnSoloUso)
         {
-            dialogoCompletado = true; // Sellamos el diálogo para siempre
-            if (dialogueMark != null) dialogueMark.SetActive(false); // Apagamos la marca de ayuda
+            dialogoCompletado = true;
+            if (dialogueMark != null) dialogueMark.SetActive(false);
         }
         else
         {
-            // Si no es de un solo uso (ej. un NPC normal), volvemos a mostrar la E
             if (dialogueMark != null && isPlayerInRange) dialogueMark.SetActive(true); 
         }
     }
@@ -113,14 +110,13 @@ public class Dialogue : MonoBehaviour
     MonoBehaviour villanoScript = obj.GetComponent("VillanoIA") as MonoBehaviour;
     if (villanoScript != null) villanoScript.enabled = !congelar;
 
-    // --- EL ARREGLO PARA EL SONIDO ---
     MovimientoJugador mov = obj.GetComponent<MovimientoJugador>();
     if (mov != null)
     {
         mov.estaEnDialogo = congelar;
         if (congelar && mov.fuentePasos != null)
         {
-            mov.fuentePasos.Stop(); // Cortamos el sonido de raíz aquí
+            mov.fuentePasos.Stop();
         }
     }
 }
@@ -137,7 +133,6 @@ public class Dialogue : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        // Si ya se completó, no hacemos nada para no mostrar la "E" por error
         if (dialogoCompletado) return; 
 
         if (collision.CompareTag("Player"))

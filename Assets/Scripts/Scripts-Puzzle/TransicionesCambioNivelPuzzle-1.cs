@@ -22,20 +22,17 @@ public class TransicionesCambioNivelPuzzle1 : MonoBehaviour
         {
             isTransitioning = true;
             
-            // 1. Cierra las métricas locales de tu nivel
             MetricasPuzzleNivel metricas = Object.FindAnyObjectByType<MetricasPuzzleNivel>();
             if (metricas != null) 
             {
                 metricas.FinalizarNivel();
             }
 
-            // 2. Avisa al DDA (Crucial para que el tutorial cuente 1/3, 2/3 y 3/3)
             if (DDA_cuadriculaPiedra.Instancia != null)
             {
                 DDA_cuadriculaPiedra.Instancia.RegistrarFinDeNivel();
             }
 
-            // 3. Inicia la transición visual y cambia de escena
             StartCoroutine(SceneLoad(sceneToLoad));
         }
     }

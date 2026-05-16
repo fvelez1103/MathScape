@@ -7,7 +7,6 @@ public class cameraMove : MonoBehaviour
     public int index;
     public Camera currentCamera;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentCamera = camaras[0];
@@ -15,7 +14,6 @@ public class cameraMove : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))

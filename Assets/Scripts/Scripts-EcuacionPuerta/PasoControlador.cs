@@ -13,21 +13,18 @@ public class PasoControlador : MonoBehaviour
     public TextMeshProUGUI textoEstadoIntermedio;
     
     [Header("Panel de Explicación Integrado")]
-    public GameObject panelExplicacionObj; // Arrastra aquí el "PanelExplicacion"
-    public TextMeshProUGUI textoExplicacionTMP; // Arrastra aquí el "TextoExplicacion"
+    public GameObject panelExplicacionObj;
+    public TextMeshProUGUI textoExplicacionTMP;
 
-    // 🟢 NOTA: Se añadió "string explicacion" al final de esta función
     public void ConfigurarPaso(int indice, string accion, string estadoFormula, string explicacion)
     {
         numeroPasoTexto.text = indice.ToString();
         accionTexto.text = accion;
         textoEstadoIntermedio.text = estadoFormula;
         
-        // Al inicio, ocultamos el texto gris (o lo dejamos vacío)
         textoEstadoIntermedio.gameObject.SetActive(false); 
         valorActualTexto.text = "0";
 
-        // 🟢 Asignamos el texto y ocultamos el panel de explicación al inicio
         if (textoExplicacionTMP != null)
         {
             textoExplicacionTMP.text = "💡 Explicación matemática:\n" + explicacion;
@@ -57,7 +54,6 @@ public class PasoControlador : MonoBehaviour
     {
         textoEstadoIntermedio.gameObject.SetActive(true);
 
-        // 🟢 Desplegamos la explicación al acertar el paso
         if (panelExplicacionObj != null)
         {
             panelExplicacionObj.SetActive(true);
